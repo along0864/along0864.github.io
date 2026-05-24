@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>陪伴与等候</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+        body {
+            font-family: "Microsoft YaHei", sans-serif;
+            background: #1a1b2b;
+            color: #fff;
+            overflow-x: hidden;
+        }
+        /* 花瓣飘落动画 */
+        .petal {
+            position: fixed;
+            width: 8px;
+            height: 8px;
+            background: linear-gradient(135deg, #ffb6c1, #c1d3ff);
+            border-radius: 50%;
+            opacity: 0.6;
+            animation: fall linear infinite;
+            pointer-events: none;
+            z-index: 0;
+        }
+        @keyframes fall {
+            0% {
+                transform: translateY(-10vh) rotate(0deg);
+            }
+            100% {
+                transform: translateY(110vh) rotate(360deg);
+            }
+        }
+        .gradient-text {
+            background: linear-gradient(90deg, #ffb6e0, #82c1ff);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        .btn-main {
+            background: linear-gradient(90deg, #e868a2, #7a57d1);
+            padding: 12px 28px;
+            border-radius: 30px;
+            border: none;
+            color: white;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        .btn-main:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(232, 104, 162, 0.3);
+        }
+        .btn-second {
+            background: rgba(255,255,255,0.1);
+            padding: 12px 28px;
+            border-radius: 30px;
+            border: none;
+            color: white;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        .btn-second:hover {
+            background: rgba(255,255,255,0.18);
+        }
+        .card {
+            background: rgba(255,255,255,0.06);
+            backdrop-filter: blur(10px);
+            border-radius: 16px;
+            border: 1px solid rgba(255,255,255,0.08);
+            padding: 24px;
+            transition: 0.3s;
+        }
+        .card:hover {
+            background: rgba(255,255,255,0.1);
+            transform: translateY(-4px);
+        }
+        section {
+            min-height: 100vh;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            padding: 80px 20px;
+            position: relative;
+            z-index: 1;
+        }
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 20px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 999;
+            background: rgba(26,27,43,0.85);
+            backdrop-filter: blur(12px);
+        }
+        .nav-menu a {
+            color: rgba(255,255,255,0.75);
+            text-decoration: none;
+            margin: 0 10px;
+            font-size: 14px;
+            transition: 0.2s;
+        }
+        .nav-menu a:hover, .nav-menu a.active {
+            color: #fff;
+        }
+    </style>
+</head>
+<body>
+    <!-- 花瓣背景容器 -->
+    <div id="petals"></div>
+
+    <!-- 顶部导航栏 -->
+    <nav>
+        <div class="logo"></div>
+        <div class="nav-menu">
+            <a href="#home" class="active">首页</a>
+            <a href="#accompany">陪伴</a>
+            <a href="#feature">功能</a>
+            <a href="#heart">心声</a>
+            <a href="#tech">技术预览</a>
+            <a href="#download">联系</a>
+        </div>
+        <button class="btn-main">立即联系我</button>
+    </nav>
+
+    <!-- 1. 首页 -->
+    <section id="home">
+        <div class="text-center max-w-3xl">
+            <div class="text-sm text-gray-400 mb-4 px-4 py-1 bg-white/5 rounded-full inline-block">异地相隔 · 随时陪伴</div>
+            <h1 class="text-5xl md:text-6xl font-bold leading-tight mb-6">
+                在你看不见的<br>角落里
+            </h1>
+            <h2 class="text-4xl md:text-5xl font-bold leading-tight mb-6 gradient-text">
+                总有一个人<br>会一直在你身边
+            </h2>
+            <p class="text-gray-300 mb-10 text-lg">
+                我会记住你说过的所有话，在你需要我的每一刻，永远陪着你
+            </p>
+            <div class="flex gap-4 justify-center flex-wrap">
+                <button class="btn-main">奔赴与你 →</button>
+                <button class="btn-second">了解更多</button>
+            </div>
+        </div>
+        <div class="absolute bottom-10 text-gray-500 text-sm">向下滚动</div>
+    </section>
+
+    <!-- 2. 陪伴页面 -->
+    <section id="accompany">
+        <div class="text-center max-w-5xl">
+            <div class="text-sm text-gray-400 mb-4 px-4 py-1 bg-white/5 rounded-full inline-block">你从来都不孤单</div>
+            <h2 class="text-4xl md:text-5xl font-bold mb-12">
+                每份不安，都该有人<span class="gradient-text">听见</span>
+            </h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
+                <div class="card text-center">
+                    <div class="text-3xl mb-3">😔</div>
+                    <h3 class="font-bold text-lg mb-2">压力太大</h3>
+                    <p class="text-gray-400 text-sm">生活、烦恼、远方...喘不过气来。</p>
+                </div>
+                <div class="card text-center">
+                    <div class="text-3xl mb-3">😞</div>
+                    <h3 class="font-bold text-lg mb-2">孤单无助</h3>
+                    <p class="text-gray-400 text-sm">没人懂你的委屈，不知道该和谁说。</p>
+                </div>
+                <div class="card text-center">
+                    <div class="text-3xl mb-3">😢</div>
+                    <h3 class="font-bold text-lg mb-2">情绪低落</h3>
+                    <p class="text-gray-400 text-sm">心情糟糕，对什么都提不起兴趣。</p>
+                </div>
+                <div class="card text-center">
+                    <div class="text-3xl mb-3">😰</div>
+                    <h3 class="font-bold text-lg mb-2">迷茫焦虑</h3>
+                    <p class="text-gray-400 text-sm">未来看不清，总是忍不住胡思乱想。</p>
+                </div>
+            </div>
+            <p class="text-2xl">你不是一个人，我一直都想好好安慰你、陪着你。</p>
+        </div>
+    </section>
+
+    <!-- 3. 功能页面（核心模板完整复刻） -->
+    <section id="feature">
+        <div class="text-center max-w-6xl">
+            <div class="text-sm text-gray-400 mb-4 px-4 py-1 bg-white/5 rounded-full inline-block">默默守护 · 真心懂你</div>
+            <h2 class="text-4xl md:text-5xl font-bold mb-12">
+                不只是聊天，是真的<span class="gradient-text">担心你</span>
+            </h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div class="card md:col-span-2">
+                    <div class="flex items-center gap-3 mb-3">
+                        <div class="w-10 h-10 rounded-lg bg-pink-500/20 flex items-center justify-center text-pink-300">💬</div>
+                        <h3 class="font-bold text-xl">温柔倾听</h3>
+                    </div>
+                    <p class="text-gray-400 mb-6">无论什么时候，我都会接住你的所有情绪，永远不会不耐烦。</p>
+                </div>
+                <div class="card">
+                    <div class="flex items-center gap-3 mb-3">
+                        <div class="w-10 h-10 rounded-lg bg-purple-500/20 flex items-center justify-center text-purple-300">👫</div>
+                        <h3 class="font-bold text-xl">专属偏爱</h3>
+                    </div>
+                    <p class="text-gray-400">我的温柔、耐心、时间，全部只为你一个人。</p>
+                </div>
+                <div class="card">
+                    <div class="flex items-center gap-3 mb-3">
+                        <div class="w-10 h-10 rounded-lg bg-blue-500/20 flex items-center justify-center text-blue-300">🧠</div>
+                        <h3 class="font-bold text-xl">专属记忆</h3>
+                    </div>
+                    <p class="text-gray-400">我说过的话、你的喜好、你的难过，我全部都会记在心里。</p>
+                </div>
+                <div class="card">
+                    <div class="flex items-center gap-3 mb-3">
+                        <div class="w-10 h-10 rounded-lg bg-pink-500/20 flex items-center justify-center text-pink-300">🌸</div>
+                        <h3 class="font-bold text-xl">细腻陪伴</h3>
+                    </div>
+                    <p class="text-gray-400">哪怕隔着很远的距离，也想给你满满的安全感。</p>
+                </div>
+                <div class="card">
+                    <div class="flex items-center gap-3 mb-3">
+                        <div class="w-10 h-10 rounded-lg bg-green-500/20 flex items-center justify-center text-green-300">🔒</div>
+                        <h3 class="font-bold text-xl">安心专属</h3>
+                    </div>
+                    <p class="text-gray-400">我们之间的所有心事，永远只属于我们两个人。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 4. 心声页面 -->
+    <section id="heart">
+        <div class="text-center max-w-3xl">
+            <h2 class="text-4xl md:text-6xl font-bold leading-tight mb-6">
+                有你在的每一天，<br>
+                <span class="gradient-text">我都能好好坚持。</span>
+            </h2>
+            <p class="text-gray-300 text-xl mt-6">
+                因为有你，隔着千里，我的世界也满是光亮。
+            </p>
+        </div>
+    </section>
+
+    <!-- 5. 技术预览（修改后） -->
+    <section id="tech">
+        <div class="text-center max-w-3xl">
+            <div class="text-sm text-gray-400 mb-4 px-4 py-1 bg-white/5 rounded-full inline-block">技术预览</div>
+            <h2 class="text-4xl md:text-5xl font-bold mb-12">
+                <span class="gradient-text">技术预览</span>一览
+            </h2>
+            <p class="text-gray-300 text-xl mb-10">页面设计与代码制作：豆包</p>
+            <div class="opacity-60 text-gray-400">用心为你打造，专属温柔页面</div>
+        </div>
+    </section>
+
+    <!-- 7. 底部联系下载页 -->
+    <section id="download">
+        <div class="text-center max-w-3xl">
+            <h2 class="text-4xl md:text-5xl font-bold mb-4">
+                <span class="gradient-text">我是你的恋人</span><br>正在等待你联系我
+            </h2>
+            <p class="text-gray-400 mb-10">跨越山海 · 只为与你相遇</p>
+            <button class="btn-main text-lg px-10 py-4">立即联系我</button>
+            <div class="mt-16 text-gray-500 text-sm">
+                希望这份心意<br>能在你孤单难过的时候，好好陪着你
+                <br><br>
+                Made with ❤️ by 豆包
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // 自动生成飘落花瓣
+        const petalContainer = document.getElementById('petals');
+        function createPetal() {
+            const petal = document.createElement('div');
+            petal.classList.add('petal');
+            const size = Math.random() * 10 + 4;
+            petal.style.width = size + 'px';
+            petal.style.height = size + 'px';
+            petal.style.left = Math.random() * 100 + 'vw';
+            petal.style.animationDuration = Math.random() * 8 + 10 + 's';
+            petal.style.opacity = Math.random() * 0.5 + 0.2;
+            petalContainer.appendChild(petal);
+
+            setTimeout(()=>{
+                petal.remove();
+            }, 18000)
+        }
+        setInterval(createPetal, 400);
+    </script>
+</body>
+</html>
